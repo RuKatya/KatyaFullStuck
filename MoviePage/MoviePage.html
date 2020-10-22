@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .menubar {
+            background: linear-gradient(176deg, rgba(87, 42, 209, 0.8799894957983193) 31%, rgba(61, 112, 227, 0.6530987394957983) 60%, rgba(81, 142, 232, 0.13209033613445376) 100%);
+            height: 120px;
+        }
+        
+        .logo {
+            position: absolute;
+            margin: 0.7% 0 0 9.5%;
+            padding: 1%;
+            background-color: white;
+            color: black;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .menubar__item {
+            width: 20%;
+        }
+        
+        .menubar__item>ul {
+            position: absolute;
+            list-style: none;
+            margin: 4% 0 0 51.8%;
+            width: 35%;
+        }
+        
+        .menubar__item>ul>li {
+            float: right;
+            margin: 0 1% 0 1%;
+            padding: 0 1% 0 1%;
+            font-size: 1.1rem;
+        }
+        
+        .menubar__item>ul>li>a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        .information {
+            position: relative;
+            max-width: 85%;
+            margin: auto;
+        }
+        
+        .mostPopular {
+            background: linear-gradient(180deg, rgba(172, 160, 226, 0.13489145658263302) 0%, rgba(105, 81, 221, 1) 50%, rgba(179, 142, 230, 0.13209033613445376) 100%);
+            padding: 1% 1% 3% 1%;
+        }
+        
+        .mostPopular__list {
+            width: 95%;
+            display: grid;
+            grid-template-columns: 25% 25% 25% 25%;
+            grid-template-rows: 50% 50%;
+            grid-row-gap: 1%;
+            grid-column-gap: 1%;
+        }
+        
+        .mostPopular__list--movieBigger {
+            grid-column: 1/3;
+            grid-row: 1/3;
+        }
+        
+        .mostPopular__list--movie>img {
+            max-width: 100%;
+        }
+        
+        .mostPopular__list--movieBigger>p {
+            color: white;
+            font-size: 1.7rem;
+            text-shadow: 0px 0px 10px black;
+            margin: -10% 0 0 4%;
+            font-weight: bold;
+        }
+        
+        .mostPopular__list--movieSmaller>p {
+            color: white;
+            font-size: 1.3rem;
+            text-shadow: 0px 0px 5px black;
+            margin: -12% 0 0 3%;
+            font-weight: bold;
+        }
+        
+        .newMovies {
+            background: linear-gradient(180deg, rgba(172, 160, 226, 0.13489145658263302) 0%, rgba(105, 81, 221, 1) 50%, rgba(179, 142, 230, 0.13209033613445376) 100%);
+        }
+        
+        .newMovies__title {
+            color: rgb(41, 9, 41);
+            margin: 4% 0 0 1.5%;
+            padding: 1% 0 0 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .newMovies__list {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .newMovies__list--movies {
+            width: 15%;
+            margin: 0.7%;
+        }
+        
+        .newMovies__list--movies>img {
+            width: 100%;
+        }
+        
+        .newMovies__list--movies>p {
+            text-align: center;
+            margin: 2% 0 0 0;
+            color: rgb(41, 9, 41);
+            font-size: 1.1rem;
+        }
+        
+        .fanFavorites {
+            background: linear-gradient(180deg, rgba(172, 160, 226, 0.13489145658263302) 0%, rgba(105, 81, 221, 1) 50%, rgba(179, 142, 230, 0.13209033613445376) 100%);
+        }
+        
+        .fanFavorites__title {
+            color: rgb(41, 9, 41);
+            margin: 4% 0 0 1.5%;
+            padding: 1% 0 0 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .fanFavorites__list {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .fanFavorites__list--movie {
+            width: 15%;
+            margin: 0.7%;
+        }
+        
+        .fanFavorites__list--movie>img {
+            width: 100%;
+        }
+        
+        .fanFavorites__list--movie>p {
+            text-align: center;
+            margin: 2% 0 0 0;
+            color: rgb(41, 9, 41);
+            font-size: 1.1rem;
+        }
+        
+        .comingSoon {
+            background: linear-gradient(180deg, rgba(172, 160, 226, 0.13489145658263302) 0%, rgba(105, 81, 221, 1) 50%, rgba(179, 142, 230, 0.13209033613445376) 100%);
+        }
+        
+        .comingSoon__title {
+            color: rgb(41, 9, 41);
+            margin: 4% 0 0 1.5%;
+            padding: 1% 0 0 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .comingSoon__list {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .comingSoon__list--movie {
+            width: 15%;
+            margin: 0.7%;
+        }
+        
+        .comingSoon__list--movie>img {
+            width: 100%;
+        }
+        
+        .comingSoon__list--movie>p {
+            text-align: center;
+            margin: 2% 0 0 0;
+            color: rgb(41, 9, 41);
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            background-color: #cab5df78;
+            height: 80px;
+            text-align: center;
+        }
+        
+        footer>ul {
+            list-style: none;
+            width: 35%;
+            margin: 3% 0 0 35%;
+        }
+        
+        footer>ul>li {
+            float: left;
+            margin: 3% 1% 0 1%;
+            padding: 0 1% 0 1%;
+            font-size: 1.1rem;
+        }
+        
+        footer>ul>li>a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        @media only screen and (max-width:1400px) {
+            .logo {
+                margin: 2% 0 0 9.5%;
+            }
+            .menubar__item>ul {
+                position: absolute;
+                list-style: none;
+                margin: 4% 0 0 38%;
+                width: 50%;
+            }
+            .mostPopular__list {
+                display: grid;
+                grid-template-columns: 50% 50%;
+                grid-template-rows: 25% 25% 25% 25%;
+                grid-row-gap: 7%;
+                margin: 0 0 25% 0;
+            }
+            .newMovies__title {
+                margin: 4% 0 1.5% 1.5%;
+            }
+            .newMovies__list--movies {
+                width: 30%;
+                margin: 0.7%;
+            }
+            .fanFavorites__title {
+                margin: 4% 0 1.5% 1.5%;
+            }
+            .fanFavorites__list--movie {
+                width: 30%;
+                margin: 0.7%;
+            }
+            .comingSoon__title {
+                margin: 4% 0 1.5% 1.5%;
+            }
+            .comingSoon__list--movie {
+                width: 30%;
+                margin: 0.7%;
+            }
+            .comingSoon__list--movie>p {
+                margin: 2% 0 0 0;
+            }
+            footer>ul {
+                list-style: none;
+                width: 50%;
+                margin: 5% 0 0 25%;
+            }
+        }
+        
+        @media only screen and (max-width: 850px) {
+            .logo {
+                margin: 3% 0 0 5%;
+            }
+            .information {
+                max-width: 90%;
+                margin: auto;
+            }
+            .mostPopular__list {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin: 0;
+            }
+            .mostPopular__list--movie {
+                width: 90%;
+                margin: 3% 3% 10% 3%;
+            }
+            .mostPopular__list--movie>img {
+                width: 100%;
+            }
+            .mostPopular__list--movieSmaller>img {
+                display: none;
+            }
+            .mostPopular__list--movieSmaller {
+                margin: 10% 0 0 0;
+            }
+            .newMovies__title {
+                margin: 4% 0 1.5% 1.5%;
+            }
+            .newMovies__list--movies {
+                width: 45%;
+                margin: 0.7%;
+            }
+            .fanFavorites__title {
+                margin: 4% 0 1.5% 1.5%;
+            }
+            .fanFavorites__list--movie {
+                width: 45%;
+                margin: 0.7%;
+            }
+            .comingSoon__title {
+                margin: 4% 0 1.5% 1.5%;
+            }
+            .comingSoon__list--movie {
+                width: 45%;
+                margin: 0.7%;
+            }
+            footer>ul {
+                list-style: none;
+                width: 70%;
+                margin: 5% 0 0 15%;
+            }
+            .comingSoon__list--movie>p {
+                margin: 2% 0 0 0;
+            }
+        }
+        
+        @media only screen and (max-width: 650px) {
+            .logo {
+                margin: 10% 0 0 3%;
+                padding: 2%;
+            }
+            .information {
+                max-width: 95%;
+                margin: auto;
+            }
+            .mostPopular__list {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin: 0;
+            }
+            .mostPopular__list--movie {
+                width: 90%;
+                margin: 3% 3% 10% 3%;
+            }
+            .mostPopular__list--movieBigger>p {
+                margin: -13% 0 0 4%;
+            }
+            .mostPopular__list--movie>img {
+                width: 100%;
+            }
+            .mostPopular__list--movieSmaller>img {
+                display: none;
+            }
+            .mostPopular__list--movieSmaller {
+                margin: 10% 0 0 0;
+            }
+            .newMovies__title {
+                margin: 4% 0 1.5% 1.5%;
+            }
+            .newMovies__list--movies {
+                width: 45%;
+                margin: 0.7%;
+            }
+            .fanFavorites__title {
+                margin: 4% 0 1.5% 1.5%;
+            }
+            .fanFavorites__list--movie {
+                width: 45%;
+                margin: 0.7%;
+            }
+            .comingSoon__title {
+                margin: 4% 0 1.5% 1.5%;
+            }
+            .comingSoon__list--movie {
+                width: 45%;
+                margin: 0.7%;
+            }
+            footer>ul {
+                list-style: none;
+                width: 70%;
+                margin: 5% 0 0 15%;
+            }
+            .comingSoon__list--movie>p {
+                margin: 2% 0 0 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menubar">
+        <div class="logo">LOGO</div>
+        <div class="menubar__item">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><input type="text" placeholder="Search"></li>
+                <li><a href="#">Contact us</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="information">
+        <div class="mostPopular">
+            <div class="mostPopular__list">
+                <div class="mostPopular__list--movie mostPopular__list--movieBigger"><img src="Mostpopular/BadBoys.jpg">
+                    <p>Bad boys for life</p>
+                </div>
+                <div class="mostPopular__list--movie mostPopular__list--movieSmaller"><img src="Mostpopular/ThtGentlemen.jpg">
+                    <p>The gentlemen</p>
+                </div>
+                <div class="mostPopular__list--movie mostPopular__list--movieSmaller"><img src="Mostpopular/Buffaloed.jpg">
+                    <p>Buffaloed</p>
+                </div>
+                <div class="mostPopular__list--movie mostPopular__list--movieSmaller"><img src="Mostpopular/TheBrokenHeartsGallery.jpg">
+                    <p>The broken hearts gallery</p>
+                </div>
+                <div class="mostPopular__list--movie mostPopular__list--movieSmaller"><img src="Mostpopular/WordsOnBathroomWalls.jpg">
+                    <p>Words on bathroom walls</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="newMovies">
+            <div class="newMovies__title">New movies</div>
+            <div class="newMovies__list">
+                <div class="newMovies__list--movies"><img src="NewFilm/Ava.jpg">
+                    <p>Ava</p>
+                </div>
+                <div class="newMovies__list--movies"><img src="NewFilm/Mulan.jpg">
+                    <p>Mulan</p>
+                </div>
+                <div class="newMovies__list--movies"><img src="NewFilm/SecretSocietySecondBornRoyalsr.jpg">
+                    <p>Secret Society of Second Born Royals</p>
+                </div>
+                <div class="newMovies__list--movies"><img src="NewFilm/Tenet.jpg">
+                    <p>Tenet</p>
+                </div>
+                <div class="newMovies__list--movies"><img src="NewFilm/TheHaunting.jpg">
+                    <p>The Haunting of Margam Castle</p>
+                </div>
+                <div class="newMovies__list--movies"><img src="NewFilm/TheOwner.jpg">
+                    <p>The Owners</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="fanFavorites">
+            <div class="fanFavorites__title">Fan favorites</div>
+            <div class="fanFavorites__list">
+                <div class="fanFavorites__list--movie"><img src="FanFavorites/BirdsOfPrey.jpg">
+                    <p>Birds of prey</p>
+                </div>
+                <div class="fanFavorites__list--movie"><img src="FanFavorites/Greyhound.jpg">
+                    <p>Greyhound</p>
+                </div>
+                <div class="fanFavorites__list--movie"><img src="FanFavorites/RobinWish.jpg">
+                    <p>Robin's wish</p>
+                </div>
+                <div class="fanFavorites__list--movie"><img src="FanFavorites/TheSocialDilemma.jpg">
+                    <p>The social dilemma</p>
+                </div>
+                <div class="fanFavorites__list--movie"><img src="FanFavorites/TheWayBack.jpg">
+                    <p>The way back</p>
+                </div>
+                <div class="fanFavorites__list--movie"><img src="FanFavorites/WayISeeIt.jpg">
+                    <p>The way I see it</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="comingSoon">
+            <div class="comingSoon__title">Comming soon</div>
+            <div class="comingSoon__list">
+                <div class="comingSoon__list--movie"><img src="CommigSoon/2067.jpg">
+                    <p>2067</p>
+                </div>
+                <div class="comingSoon__list--movie"><img src="CommigSoon/Doorman.jpg">
+                    <p>The Doorman</p>
+                </div>
+                <div class="comingSoon__list--movie"><img src="CommigSoon/HubieHalloween.jpg">
+                    <p>Hubie Halloween</p>
+                </div>
+                <div class="comingSoon__list--movie"><img src="CommigSoon/OnTheRocks.jpg">
+                    <p>On the Rocks</p>
+                </div>
+                <div class="comingSoon__list--movie"><img src="CommigSoon/SheIsTheOcean.jpg">
+                    <p>She is the Ocean</p>
+                </div>
+                <div class="comingSoon__list--movie"><img src="CommigSoon/TheWarWithGrandpa.jpg">
+                    <p>The War with Grandpa</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <ul>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms and Policies</a></li>
+        </ul>
+    </footer>
+</body>
+
+</html>

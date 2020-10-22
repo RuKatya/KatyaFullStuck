@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            font-family: Arial, Helvetica, freesans, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0px;
+            padding-left: 0;
+            display: flex;
+            flex-direction: row;
+            text-align: center;
+            align-items: center;
+            background-color: black;
+            height: 55px;
+        }
+
+        li {
+            width: 10%;
+            border-left: 2px solid white;
+            color: white;
+            text-decoration: none;
+        }
+
+        ul>li>a {
+            color: white;
+            font-size: 2.2vw;
+        }
+
+        li>a>img {
+            width: 50%;
+        }
+
+        input {
+            width: 20%;
+            margin-right: 1%;
+            height: 60%;
+        }
+
+        .welcomeText {
+            float: left;
+            font-size: 3.5vw;
+            margin: 2% 0 2% 2.7%;
+            font-family: Arial, Helvetica, freesans, sans-serif;
+            color: #4a4a4a;
+        }
+
+        .date {
+            float: right;
+            font-size: 3.4vw;
+            color: gray;
+            margin: 2% 2.7% 2% 0;
+        }
+
+        .ergent {
+            width: 95%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .ergent>a>h1 {
+            margin: -10% 0 1% 2%;
+            color: white;
+            font-size: 3.4vw;
+            text-shadow: 1px 1px 1px black;
+        }
+
+        .ergent>a>p {
+            margin-bottom: 5%;
+            margin-left: 2%;
+            color: white;
+            font-size: 2vw;
+            text-shadow: 1px 1px 1px black;
+        }
+
+        .ergent>a>img {
+            width: 100%;
+        }
+
+        .ergent>a {
+            text-decoration: none;
+        }
+
+        .medialist {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .mediacontent {
+            width: 46%;
+            padding: 0 20px 0 20px;
+        }
+
+        .mediacontent>img {
+            width: 100%;
+        }
+
+        .mediacontent>p {
+            margin: -12% 0 0 2%;
+            margin-bottom: 10%;
+            /*margin-left: 2%; */
+            color: white;
+            font-size: 2vw;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px black;
+        }
+
+        @media only screen and (max-width: 1100px) {
+            .mediacontent {
+                width: 95%;
+                padding: 0 20px 0 20px;
+            }
+
+
+            .mediacontent>p {
+                margin: -12% 0 0 2%;
+                margin-bottom: 10%;
+                /*margin-left: 2%; */
+                color: white;
+                font-size: 4vw;
+                font-weight: bold;
+                text-shadow: 1px 1px 1px black;
+            }
+
+            .ergent>a>h1 {
+                margin: -20% 0 1% 3%;
+                color: white;
+                font-size: 4vw;
+                text-shadow: 1px 1px 1px black;
+            }
+
+            .ergent>a>p {
+                margin-bottom: 6%;
+                margin-left: 2%;
+                color: white;
+                font-size: 2.5vw;
+                text-shadow: 1px 1px 1px black;
+            }
+        }
+
+        @media only screen and (max-width: 700px) {
+            .ergent>a>h1 {
+                margin: -15% 0 1% 2%;
+                color: white;
+                font-size: 4vw;
+                text-shadow: 1px 1px 1px black;
+            }
+
+
+            .mediacontent>img {
+                width: 100%;
+                display: none;
+            }
+
+            .medialist {
+                box-shadow: 1px 1px 1px black;
+            }
+
+            .mediacontent {
+                /* margin: -12% 0 0 2%; */
+                margin-top: 13%;
+                /*margin-left: 2%; */
+                /* color: black; */
+                /* font-size: 2vw; */
+                /* font-weight: bold; */
+                text-shadow: 1px 1px 1px black;
+                width: 95%;
+                /* box-shadow: 1px 1px 1px black; */
+            }
+
+            .mediacontent>p {
+                padding: 5%;
+                margin: -12% 0 0 2%;
+                /* margin-bottom: 10%; */
+                /*margin-left: 2%; */
+                color: black;
+                font-size: 4vw;
+                font-weight: bold;
+                box-shadow: 0px 0px 3px black;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <ul>
+            <li><a href="https://bbc.com">BBC</a></li>
+            <li><a href="https://account.bbc.com/"><img
+                        src="https://icdn.lenta.ru/images/2017/05/19/18/20170519180458866/pic_dadcca148cd70284e74c7915a6acd990.jpg"></a>
+            </li>
+            <li><a hreg="#">News</a></li>
+            <li><a hreg="#">Sport</a></li>
+            <li><a href="#">Reel</a></li>
+            <li><a href="#">Worklife</a></li>
+            <li><a href="#">Travel</a></li>
+            <li><a href="#">Future</a></li>
+            <li><a href="#">More</a></li>
+            <input type="search" name="search" placeholder="search">
+        </ul>
+    </div>
+    <div class="info">
+        <h1 class="welcomeText">Welcome to BBC.com</h1>
+        <div class="date">Monday, 21 September</div>
+    </div>
+    <div class="ergent">
+        <a href="#"><img src="https://ichef.bbc.co.uk/wwhp/999/cpsprodpb/4296/production/_114564071_tv063452103.jpg">
+            <h1>Republicans secure vote for Supreme Court replacment</h1>
+            <p>Senator Mitt Romney of Utah has said he would support a vote on President Trump's court nominee</p>
+        </a>
+    </div>
+    <div class="medialist">
+        <a class="mediacontent" href="#"><img
+                src="https://ichef.bbc.co.uk/wwhp/624/cpsprodpb/80AC/production/_114504923_orlagh.jpg">
+            <p>One of the
+                world's 'dodgiest addresses'</p>
+        </a>
+        <a class="mediacontent" href="#"><img
+                src="https://ichef.bbc.co.uk/wwhp/624/cpsprodpb/C9E5/production/_114558615_hls-eva-apr2020.jpg">
+            <p>Ellen
+                DeGeneres retunts to screens with apology</p>
+        </a>
+        <a class="mediacontent" href="#"><img
+                src="https://ichef.bbc.co.uk/wwhp/624/ibroadcast/images/live/p0/8r/w0/p08rw02w.jpg">
+            <p>The deadly viruses
+                that vanished</p>
+        </a>
+        <a class="mediacontent" href="#"><img
+                src="https://ichef.bbc.co.uk/wwhp/624/ibroadcast/images/live/p0/8r/kc/p08rkcts.jpg">
+            <p>Why you 'click'
+                with some people</p>
+        </a>
+    </div>
+</body>
+
+</html>
