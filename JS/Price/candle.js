@@ -54,3 +54,54 @@ function vatCandleRGB() {
     document.getElementById('textChangeVatRGB').innerHTML = 'The vat is ' + priceArrow
     document.getElementById('textChangeVatRGB').style.color = 'red';
 }
+
+
+
+//SHOPPING BASKET
+let cart = {
+    'five123' : {"name": "five", "count":3},
+    'three123' : {"name": "three", "count":3},
+    'RGB123' : {"name": "RGB", "count":3}
+};
+
+document.onclick = event => {
+    // console.log(event.target.classList); //נותן לראות את הקלאסים שיש בעמוד
+    if (event.target.classList.contains('plus')) {  //ניתן למצוא דרכו קלאס שאנחנו צריכים
+        plusFunction(event.target.dataset.id);
+    }
+    if (event.target.classList.contains('minus')) {  //ניתן למצוא דרכו קלאס שאנחנו צריכים
+        minusFunction(event.target.dataset.id);
+    }
+}
+
+//plus items
+const plusFunction = id => {
+    cart[id]['count']++;
+    renderCart();
+}
+
+
+//minus items
+const minusFunction = id => {
+    if (cart[id]['count']-1 == 0) {
+        deleteFunction(id);
+        return true;
+    }
+    cart[id]['count'] --;
+    renderCart();
+}
+
+//delet items
+const deleteFunction = id => {
+    delete cart[id];
+    renderCart();
+}
+
+const renderCart = () => {
+    console.log(cart);
+}
+
+renderCart();
+
+function cartAll() {
+}
