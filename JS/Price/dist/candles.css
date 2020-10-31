@@ -56,3 +56,45 @@ button {
 p {
   font-size: 1.2em;
 }
+
+@media only screen and (max-width: 1100px) {
+  .title {
+    font-size: 1.7em;
+  }
+
+  .candlesBig {
+    height: 55%;
+  }
+
+  p {
+    font-size: 1.3em;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .candlesBig {
+    height: 40%;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .title {
+    font-size: 1.5em;
+  }
+
+  .candles {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: 5%;
+    width: 90%;
+    margin: auto;
+    padding-bottom: 5%;
+    text-align: center;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+
+  .button-primary {
+    margin-bottom: 5%;
+  }
+}
