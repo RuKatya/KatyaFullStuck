@@ -59,9 +59,9 @@ function vatCandleRGB() {
 
 //SHOPPING BASKET
 let cart = {
-    'five123' : {"name": "five", "count":3},
-    'three123' : {"name": "three", "count":3},
-    'RGB123' : {"name": "RGB", "count":3}
+    'five123' : {"name": "five", "count":3, "price": "100"},
+    'three123' : {"name": "three", "count":3, "price": "165"},
+    'RGB123' : {"name": "RGB", "count":3, "price": "250"}
 };
 
 document.onclick = event => {
@@ -103,5 +103,12 @@ const renderCart = () => {
 
 renderCart();
 
-function cartAll() {
+const cartall = id => {
+    if (cart[id]['count']+1 == 1) {
+        countFuction();
+    }
+}
+
+const countFuction = () => {
+    cart[id]['price'] = ['price']
 }
