@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            font-size: 2rem;
+            padding: 20px;
+            border: none;
+            border-bottom: 1px solid gray;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- SIMPLE FORM EVENTS -->
+    <h1>Simple form events</h1>
+    <input type="text" placeholder="Your name" onchange="handleInput(event)">
+    <div id="theDiv"></div>
+
+    <input type="tex" placeholder="Your age" onkeyup="handleOnKeyUp(event)">
+    <div id="theDiv__second"></div>
+
+
+    <!-- -------------------------------------------------------------- -->
+    <!-- ADVANCE FORM EVENTS -->
+    <h1>ADVANCE FORM EVENTS</h1>
+    <form onsubmit="handleSubmit(event)" action="secondPage.html">
+        <!-- כיום לא משתמשים יותר באקשיון -->
+        <input type="text" placeholder="username">
+        <input type="password" placeholder="passwird">
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="theAnswer"></div>
+
+    <!-- אך מה נעשה אם משתנה הסדר של אינפוטים -->
+    <form onsubmit="handleSubmit__second(event)" action="secondPage.html">
+        <input type="email" placeholder="email" name="email">
+        <input type="text" placeholder="username" name="username" required>
+        <!-- rewuired מחייב את הבן אדם למלא את השדה המודגש -->
+        <input type="password" placeholder="password" name="password">
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="theAnswer__second"></div>
+    <script src="js.js"></script>
+</body>
+
+</html>

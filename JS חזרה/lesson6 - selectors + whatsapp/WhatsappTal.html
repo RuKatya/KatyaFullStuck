@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+        }
+        
+        .app {
+            display: grid;
+            grid-template-rows: 100px auto 100px;
+            height: 80vh;
+        }
+        
+        header {
+            background-color: cadetblue;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .inputText {
+            display: flex;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 20vh;
+        }
+        
+        .message {
+            padding: 20px;
+            margin: 5px;
+            width: 90%;
+            border-radius: 5px;
+            box-shadow: 1px 1px 3px black;
+            background-color: rgb(243, 182, 160);
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+        
+        #messagesWrapper {
+            background-color: rgb(206, 203, 203);
+            overflow-y: auto;
+            /*עושה גלגול למעלה ולמטה*/
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <header>Whatsapp</header>
+        <div id="messagesWrapper"></div>
+    </div>
+
+
+    <form class="inputText" onsubmit="handleSubmitMessage(event)">
+        <textarea name="message" onkeyup="handleTextArea(event)"></textarea>
+        <button type="submit" id="submitButton">Send</button>
+    </form>
+
+
+    <script>
+        // const messages = []
+        const messagesWrapper = document.querySelector('#messagesWrapper');
+
+        function handleSubmitMessage(e) {
+            e.preventDefault() //בלחיצה על לשלוח העמוד לא יתרענן
+            console.log(e)
+            const message = e.target.children.message.value //ניתן לתפוס מתוך אלאמנטים או מתוך ילדים בתוך הטארדט
+            console.log(message)
+
+            // messages.push(message); //אמור לדחוף את התיבה הקודמת ולהוסיף טקסט חדש
+            if (message.length > 0) { //תנאי , אם הטקסט יותר ארוך מ0 אותיות לשלוח את ההודעה. אם לא יהיה טקסט בתיבה לא ישלח שום דבר
+                document.querySelector('#messagesWrapper').innerHTML += htmlMessage(message) //תופס את המקום עליו יכנס הטקסט ויוסיף את הטקסט בלי לחמחוק את הדיב הקודם
+
+                e.target.reset() //מחדש את הטיבת טקסט כל פעם כשאנחנו לוחצים על לשלוח
+                messagesWrapper.scrollTo(0, messagesWrapper.scrollHeight);
+            }
+        }
+
+        function htmlMessage(message) {
+            return `<div class='message'>${message}<div>` //מה יקרה ברגע שיהיה טקסט שנישלח לחלון הראשי
+        }
+
+        function handleTextArea(e) {
+            if (e.key === 'Enter' && e.shiftKey == false) { //תנאי, אם לוחצים על אינטר והשיפט לא לחוץ נשלחת הודעה, אם לחוץ שיפט ואינטר יורד שורה
+                //submit
+                document.getElementById('submitButton').click();
+
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #theDiv {
+            width: 100px;
+            height: 100px;
+            background-color: tomato;
+            /* transition: all 25ms; */
+            position: relative;
+        }
+        
+        #idDiv {
+            width: 150px;
+            height: 150px;
+            background-color: blue;
+            transition: all 30ms;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- EVENT -->
+    <h1>EVENT</h1>
+    <div id="theDiv" draggable="true" oncontextmenu="handleOnContexyMenu(event)">CLICK ME!</div>
+
+    <!-- CLASSWORK -->
+    <h1>CLASSWORK</h1>
+    <div id="idDiv" ondblclick="handleOnDblClick(event)"></div>
+
+    <!-- <script src="js.js"></script> -->
+    <script src="event.js"></script>
+</body>
+
+</html>
