@@ -19,6 +19,7 @@
 */
 
 /*
+//NUMBER
 let number = 4; //can write whole numbers
 number = 4.5; //also fractional digits
 
@@ -26,12 +27,40 @@ console.log(4/0) //will not give error - Infinity
 console.log(-4/0) //minus infinity
 console.log('string' * 9) //NaN
 
+//STRING
 const persone = 'Katya'; //in JS we can write string in '' or ""
 
+//BOOLEAN
 const bool = true; //have only yes or no, true or false
 
+//UNDEFIEND
 let und;
 console.log(und)//undefined
 
 console.log(something) //undefined
+*/
+
+//OBJ
+/*
+const obj = { //Like human that have many values
+    name: 'John',
+    age:31,
+    isMarried: false
+};
+
+console.log(obj.name)
+//also can write =>
+console.log(obj['name'])
+//but better write with dot
+*/
+
+//ARRAY
+/*
+let arr = [
+    'plum','orange', 'apple', 
+    {}, 
+    []
+]
+
+console.log(arr[0]) //starting from 0 => 1=0
 */
