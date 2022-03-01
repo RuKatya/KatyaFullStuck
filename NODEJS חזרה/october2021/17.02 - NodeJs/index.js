@@ -1,14 +1,18 @@
+// import express from 'express';
 const express = require('express');
 const app = express();
-const PORT = procces.env.PORT || 5050;
+const PORT = process.env.PORT || 5050;
 
 app.use(express.static('public'));
 
-// app.get('/', (req, res) => {
-//     res.sendFile(__dirname + '/index.html');
-// })
+app.get('/geme', (req, res) => {
+    res.status(200).send({ name: "Katya", age: 25 });
+})
 
-// 21.02.22 - NodeJs\index.js - 32:00
+app.get('/gemefriend', (req, res) => {
+    res.status(200).send({ name: "Katya", age: 25 });
+})
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 })
