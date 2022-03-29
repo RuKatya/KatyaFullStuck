@@ -1,0 +1,21 @@
+main {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.root {
+  background-color: aquamarine;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 5% 2%;
+}
+
+.cardImg {
+  height: 20vh;
+}
+.cardImg img {
+  width: 100%;
+  height: 100%;
+}
