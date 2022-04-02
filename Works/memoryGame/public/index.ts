@@ -92,8 +92,9 @@ function swiftCard() {
                     cards.style.display = "none"
 
                     winner.innerHTML = `
-                    <h1>You winner!!!</h1>
-                    <p>Time: ${minutes}:${seconds}</p>
+                    <h1>You won!!!</h1>
+                    <h2>Time: ${minutes}:${seconds}</h2>
+                    <img src="./img/ballon.png" />
                     `
 
                     gameInfo__time.style.display = 'none'

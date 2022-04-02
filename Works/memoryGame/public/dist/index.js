@@ -118,7 +118,7 @@ function swiftCard() {
                                 if (totalOpenedInGame.length == dataGame.length) { //check if win
                                     console.log("you win");
                                     cards.style.display = "none";
-                                    winner.innerHTML = "\n                    <h1>You winner!!!</h1>\n                    <p>Time: " + minutes + ":" + seconds + "</p>\n                    ";
+                                    winner.innerHTML = "\n                    <h1>You won!!!</h1>\n                    <h2>Time: " + minutes + ":" + seconds + "</h2>\n                    <img src=\"./img/ballon.png\" />\n                    ";
                                     gameInfo__time.style.display = 'none';
                                 }
                             }
