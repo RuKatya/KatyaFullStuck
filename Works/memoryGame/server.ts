@@ -32,15 +32,13 @@ function shuffleCards(arr) {
     return arr.sort(() => Math.round(Math.random() * 100) - 50);
 }
 
-
 app.post('/get-data', (req, res) => {
-
-    const doubleCardsArr = [];
-    let shuffleCardsToSend
-
     const { numOfCards } = req.body
-
     console.log(numOfCards)
+
+    let shuffleCardsToSend
+    const doubleCardsArr = [];
+
     arrcard(numOfCards)
 
     async function arrcard(numCard) {
@@ -51,9 +49,11 @@ app.post('/get-data', (req, res) => {
                 doubleCardsArr.push(shuffleCardsToSend[j])
             }
         }
+
         console.log(doubleCardsArr.length)
 
         const arrCardsToClient = shuffleCards(doubleCardsArr)
+
         res.status(200).send(arrCardsToClient)
     }
 })

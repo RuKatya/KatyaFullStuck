@@ -38,10 +38,13 @@ var chooseLevelOfGame = document.querySelector('.chooseLevelOfGame');
 var cards = document.querySelector('.cards');
 var gameInfo__time = document.querySelector('.gameInfo__time');
 var gameInfo__score = document.querySelector('.gameInfo__score');
+var winner = document.querySelector('.winner');
 var dataGame;
 var openCard = [];
 var numOfRigthCards = 0;
 var totalOpenedInGame = [];
+var seconds = 0;
+var minutes = 0;
 function hendleNumbersOfCards(numOfCards) {
     return __awaiter(this, void 0, void 0, function () {
         var data, html;
@@ -54,20 +57,93 @@ function hendleNumbersOfCards(numOfCards) {
                     data = (_a.sent()).data;
                     dataGame = data;
                     console.log(dataGame);
+                    if (numOfCards == 4) { //change width of cards by number of cards
+                        cards.classList.add('four');
+                    }
+                    else if (numOfCards == 8) {
+                        cards.classList.add('eight');
+                    }
+                    else if (numOfCards == 12) {
+                        cards.classList.add('twelve');
+                    }
                     html = '';
                     html += dataGame.map(function (d) {
-                        return "\n        <div class=\"memory-card\">\n        <div class=\"back\" id=\"" + d.similarNum + "\">hello</div>\n        <div class=\"front\" >\n        <img src=\"" + d.img + "\" alt=\"" + d.similarNum + "\" id=\"" + d.similarNum + "\" />\n        </div>\n        </div>\n        ";
+                        return "\n        <div class=\"memory-card\" id=\"" + d.similarNum + "\">\n            <div class=\"back\" id=\"" + d.similarNum + "\"></div>\n            <div class=\"front\" >\n                <img src=\"" + d.img + "\" alt=\"" + d.similarNum + "\" id=\"" + d.similarNum + "\" />\n            </div>\n        </div>\n        ";
                     }).join('');
                     cards.innerHTML = html;
+                    timer();
+                    setInterval(function () {
+                        gameInfo__score.innerHTML = "Total: " + numOfRigthCards;
+                    }, 1000);
                     chooseLevelOfGame.style.display = "none";
                     return [2 /*return*/];
             }
         });
     });
 }
+cards.addEventListener('click', function (e) {
+    var target = e.target;
+    var targetParent = e.target.offsetParent; //get parent of child
+    if (target.nodeName === "DIV") { //check if we have the rigth nodename
+        targetParent.classList.toggle('flip');
+        console.log("the id is " + targetParent.id); //what id we get
+        if (openCard.length === 0 || openCard.length === 1) { //if we have length 0 or 1 add to arr
+            openCard.push(targetParent); //add the id of card
+            swiftCard();
+        }
+    }
+});
+function swiftCard() {
+    console.log(openCard);
+    if (openCard.length == 2) {
+        function checkOpenedCards(openedCard) {
+            return __awaiter(this, void 0, void 0, function () {
+                var data;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.get("/check?openFirst=" + openedCard[0].id + "&openSecond=" + openedCard[1].id)];
+                        case 1:
+                            data = (_a.sent()).data;
+                            console.log(data); //get back if same or not
+                            if (data === true) {
+                                console.log("they are the same");
+                                setTimeout(function () {
+                                    openedCard[0].style.opacity = "0";
+                                    openedCard[1].style.opacity = "0";
+                                }, 500);
+                                ++numOfRigthCards; //how many card is right
+                                totalOpenedInGame.push(openedCard[0], openedCard[1]); //push to opened arr
+                                console.log("total played " + totalOpenedInGame.length);
+                                console.log("the score is: " + numOfRigthCards);
+                                if (totalOpenedInGame.length == dataGame.length) { //check if win
+                                    console.log("you win");
+                                    cards.style.display = "none";
+                                    winner.innerHTML = "\n                    <h1>You winner!!!</h1>\n                    <p>Time: " + minutes + ":" + seconds + "</p>\n                    ";
+                                    gameInfo__time.style.display = 'none';
+                                }
+                            }
+                            else { //if false -> rotate the card back
+                                setTimeout(function () {
+                                    openedCard[0].classList.toggle('flip');
+                                    openedCard[1].classList.toggle('flip');
+                                }, 500);
+                                console.log("they are diffrent");
+                            }
+                            return [2 /*return*/];
+                    }
+                });
+            });
+        }
+        checkOpenedCards(openCard);
+        openCard = [];
+    }
+}
+function flipCard() {
+    this.classList.toggle('flip');
+}
 function timer() {
-    var seconds = 0;
-    var minutes = 0;
+    seconds = 0;
+    minutes = 0;
     setInterval(function () {
         seconds++;
         if (seconds < 10) {

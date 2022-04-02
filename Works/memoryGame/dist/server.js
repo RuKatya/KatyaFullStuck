@@ -36,10 +36,10 @@ function shuffleCards(arr) {
     return arr.sort(() => Math.round(Math.random() * 100) - 50);
 }
 app.post('/get-data', (req, res) => {
-    const doubleCardsArr = [];
-    let shuffleCardsToSend;
     const { numOfCards } = req.body;
     console.log(numOfCards);
+    let shuffleCardsToSend;
+    const doubleCardsArr = [];
     arrcard(numOfCards);
     function arrcard(numCard) {
         return __awaiter(this, void 0, void 0, function* () {
