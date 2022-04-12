@@ -1,8 +1,6 @@
 import express from "express";
 const app = express();
 
-// import { v4 as uuidv4 } from 'uuid';
-
 app.use(express.json());
 app.use(express.static("public"));
 
@@ -82,8 +80,6 @@ app.get('/check', (req, res) => {
         console.log(error)
     }
 })
-
-
 
 app.listen(port, () => {
     console.log(`Server listen on port http://localhost:${port}`);

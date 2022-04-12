@@ -7,6 +7,7 @@ const chooseLevelOfGame: HTMLDivElement = document.querySelector('.chooseLevelOf
 const cards: HTMLDivElement = document.querySelector('.cards')
 const gameInfo__time: HTMLDivElement = document.querySelector('.gameInfo__time')
 const gameInfo__score: HTMLDivElement = document.querySelector('.gameInfo__score')
+const gameInfo__reset: HTMLDivElement = document.querySelector('.gameInfo__reset')
 const winner: HTMLDivElement = document.querySelector('.winner')
 let dataGame: Array<Card>
 let openCard: Array<HTMLImageElement> = []
@@ -32,7 +33,7 @@ async function hendleNumbersOfCards(numOfCards) {
 
     let html = ''
 
-    html += dataGame.map(d => {
+    html += dataGame.map(d => { //each card in game
         return `
         <div class="memory-card" id="${d.similarNum}">
             <div class="back" id="${d.similarNum}"></div>
@@ -45,17 +46,25 @@ async function hendleNumbersOfCards(numOfCards) {
 
 
     cards.innerHTML = html
-    timer()
-    setInterval(() => {
+
+    timer() //timer
+
+    setInterval(() => { //total cards
         gameInfo__score.innerHTML = `Total: ${numOfRigthCards}`
     }, 1000)
+
+    setInterval(() => { //reset game
+        gameInfo__reset.innerHTML = ` <button onclick="location.reload()" class="playAgainBtn reset">Start new game</button>    `
+    }, 1000)
+
+
 
     chooseLevelOfGame.style.display = "none"
 }
 
 cards.addEventListener('click', (e) => {
     const target = e.target as Element;
-    const targetParent = e.target.offsetParent; //get parent of child
+    const targetParent = target.offsetParent; //get parent of child
     if (target.nodeName === "DIV") { //check if we have the rigth nodename
         targetParent.classList.toggle('flip')
         console.log(`the id is ${targetParent.id}`) //what id we get
@@ -92,9 +101,13 @@ function swiftCard() {
                     cards.style.display = "none"
 
                     winner.innerHTML = `
-                    <h1>You won!!!</h1>
-                    <h2>Time: ${minutes}:${seconds}</h2>
+                    <div class="winner__info">
+                        <h1>You won!!!</h1>
+                        <h2>Time: ${minutes}:${seconds}</h2>
+                    </div>
+                    
                     <img src="./img/ballon.png" />
+                    
                     `
 
                     gameInfo__time.style.display = 'none'
@@ -121,13 +134,24 @@ function flipCard() {
 function timer(): void {
     seconds = 0;
     minutes = 0;
+
+
+    if (minutes < 10) {
+        minutes = `0${minutes}`
+    }
     setInterval(() => {
         seconds++
+
         if (seconds < 10) {
             seconds = `0${seconds}`
         }
+
         if (seconds === 60) {
+
             minutes++
+            if (minutes < 10) {
+                minutes = `0${minutes}`
+            }
             seconds = 0;
         }
 

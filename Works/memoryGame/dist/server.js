@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = express_1.default();
-// import { v4 as uuidv4 } from 'uuid';
 app.use(express_1.default.json());
 app.use(express_1.default.static("public"));
 const port = 5454;

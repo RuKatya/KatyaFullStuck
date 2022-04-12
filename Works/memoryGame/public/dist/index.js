@@ -38,6 +38,7 @@ var chooseLevelOfGame = document.querySelector('.chooseLevelOfGame');
 var cards = document.querySelector('.cards');
 var gameInfo__time = document.querySelector('.gameInfo__time');
 var gameInfo__score = document.querySelector('.gameInfo__score');
+var gameInfo__reset = document.querySelector('.gameInfo__reset');
 var winner = document.querySelector('.winner');
 var dataGame;
 var openCard = [];
@@ -71,9 +72,12 @@ function hendleNumbersOfCards(numOfCards) {
                         return "\n        <div class=\"memory-card\" id=\"" + d.similarNum + "\">\n            <div class=\"back\" id=\"" + d.similarNum + "\"></div>\n            <div class=\"front\" >\n                <img src=\"" + d.img + "\" alt=\"" + d.similarNum + "\" id=\"" + d.similarNum + "\" />\n            </div>\n        </div>\n        ";
                     }).join('');
                     cards.innerHTML = html;
-                    timer();
+                    timer(); //timer
                     setInterval(function () {
                         gameInfo__score.innerHTML = "Total: " + numOfRigthCards;
+                    }, 1000);
+                    setInterval(function () {
+                        gameInfo__reset.innerHTML = " <button onclick=\"location.reload()\" class=\"playAgainBtn reset\">Start new game</button>    ";
                     }, 1000);
                     chooseLevelOfGame.style.display = "none";
                     return [2 /*return*/];
@@ -83,7 +87,7 @@ function hendleNumbersOfCards(numOfCards) {
 }
 cards.addEventListener('click', function (e) {
     var target = e.target;
-    var targetParent = e.target.offsetParent; //get parent of child
+    var targetParent = target.offsetParent; //get parent of child
     if (target.nodeName === "DIV") { //check if we have the rigth nodename
         targetParent.classList.toggle('flip');
         console.log("the id is " + targetParent.id); //what id we get
@@ -118,7 +122,7 @@ function swiftCard() {
                                 if (totalOpenedInGame.length == dataGame.length) { //check if win
                                     console.log("you win");
                                     cards.style.display = "none";
-                                    winner.innerHTML = "\n                    <h1>You won!!!</h1>\n                    <h2>Time: " + minutes + ":" + seconds + "</h2>\n                    <img src=\"./img/ballon.png\" />\n                    ";
+                                    winner.innerHTML = "\n                    <div class=\"winner__info\">\n                        <h1>You won!!!</h1>\n                        <h2>Time: " + minutes + ":" + seconds + "</h2>\n                    </div>\n                    \n                    <img src=\"./img/ballon.png\" />\n                    \n                    ";
                                     gameInfo__time.style.display = 'none';
                                 }
                             }
@@ -144,6 +148,9 @@ function flipCard() {
 function timer() {
     seconds = 0;
     minutes = 0;
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
     setInterval(function () {
         seconds++;
         if (seconds < 10) {
@@ -151,6 +158,9 @@ function timer() {
         }
         if (seconds === 60) {
             minutes++;
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
             seconds = 0;
         }
         gameInfo__time.innerHTML = "\n            <p>Timer: " + minutes + ":" + seconds + "</p>\n        ";
